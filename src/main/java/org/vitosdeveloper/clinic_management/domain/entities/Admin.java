@@ -1,12 +1,14 @@
 package org.vitosdeveloper.clinic_management.domain.entities;
 
+import org.vitosdeveloper.clinic_management.domain.enums.Role;
+
 import java.time.LocalDateTime;
 
 public class Admin extends User {
     private LocalDateTime lastLogin;
 
-    public Admin(Long id, String email, String password, LocalDateTime createdAt, LocalDateTime lastLogin) {
-        super(id, email, password, createdAt);
+    public Admin(Long id, String email, String password, LocalDateTime lastLogin) {
+        super(id, email, password, Role.ADMIN);
         this.lastLogin = lastLogin;
     }
 

@@ -5,12 +5,12 @@ import org.vitosdeveloper.clinic_management.domain.enums.Status;
 import java.time.LocalDateTime;
 
 public class Appointment {
-    private Long id;
-    private Patient patient;
-    private Doctor doctor;
-    private LocalDateTime appointmentDate;
-    private Status status;
-    private String reason;
+    private final Long id;
+    private final Patient patient;
+    private final Doctor doctor;
+    private final LocalDateTime appointmentDate;
+    private final Status status;
+    private final String reason;
 
     public Appointment(Long id, Patient patient, Doctor doctor, LocalDateTime appointmentDate, Status status, String reason) {
         this.id = id;

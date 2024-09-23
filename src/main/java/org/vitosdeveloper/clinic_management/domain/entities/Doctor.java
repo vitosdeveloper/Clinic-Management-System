@@ -1,16 +1,18 @@
 package org.vitosdeveloper.clinic_management.domain.entities;
 
+import org.vitosdeveloper.clinic_management.domain.enums.Role;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Doctor extends User {
-    private String crm;
-    private List<Speciality> specialities;
-    private List<Appointment> appoitments;
+    private final String crm;
+    private final List<Speciality> specialities;
+    private final List<Appointment> appoitments;
 
-    public Doctor(Long id, String email, String password, LocalDateTime createdAt, String crm,
+    public Doctor(Long id, String email, String password, String crm,
                   List<Speciality> specialities, List<Appointment> appoitments) {
-        super(id, email, password, createdAt);
+        super(id, email, password, Role.DOCTOR);
         this.crm = crm;
         this.specialities = specialities;
         this.appoitments = appoitments;

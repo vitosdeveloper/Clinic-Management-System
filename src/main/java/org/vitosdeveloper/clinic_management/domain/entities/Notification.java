@@ -3,10 +3,10 @@ package org.vitosdeveloper.clinic_management.domain.entities;
 import java.time.LocalDateTime;
 
 public class Notification {
-    private Long id;
-    private User recipient;
-    private String message;
-    private LocalDateTime sentAt;
+    private final Long id;
+    private final User recipient;
+    private final String message;
+    private final LocalDateTime sentAt;
 
     public Notification(String message, Long id, User recipient, LocalDateTime sentAt) {
         this.message = message;
