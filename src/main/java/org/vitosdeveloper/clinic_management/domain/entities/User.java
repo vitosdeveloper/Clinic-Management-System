@@ -47,7 +47,7 @@ public class User {
         return createdAt;
     }
 
-    public void validateFields() {
+    private void validateFields() {
         if (this.id == null || id <= 0L) throw new InvalidIdException();
         if (this.email == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(this.email)) ||
                 !Pattern.matches(EMAIL_PATTERN, email))
