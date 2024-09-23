@@ -1,6 +1,8 @@
 package org.vitosdeveloper.clinic_management.domain.entities;
 
+import org.springframework.util.StringUtils;
 import org.vitosdeveloper.clinic_management.domain.enums.Status;
+import org.vitosdeveloper.clinic_management.domain.exceptions.*;
 
 import java.time.LocalDateTime;
 
@@ -19,6 +21,7 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
         this.status = status;
         this.reason = reason;
+        validateFields();
     }
 
     public Long getId() {
@@ -43,5 +46,15 @@ public class Appointment {
 
     public String getReason() {
         return reason;
+    }
+
+    private void validateFields(){
+        if (id == null || id <= 0L) throw new InvalidIdException();
+        if (patient == null) throw new InvalidPatientException();
+        if (doctor == null) throw new InvalidDoctorException();
+        if (appointmentDate == null) throw new InvalidAppointmentDateException();
+        if (status == null) throw new InvalidStatusException();
+        if (reason == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(reason))
+                || reason.length() < 3) throw new InvalidReasonException();
     }
 }

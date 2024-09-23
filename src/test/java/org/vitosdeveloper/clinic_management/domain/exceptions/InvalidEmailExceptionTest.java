@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class InvalidEmailExceptionTest {
     @Test
-    void testInvalidEmailException() {
+    void testInstanceAndMessage() {
         InvalidEmailException exception = new InvalidEmailException();
         assertInstanceOf(RuntimeException.class, exception);
         assertEquals("Invalid email", exception.getMessage());

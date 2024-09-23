@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
-public class InvalidRoleExceptionTest {
+public class InvalidReasonExceptionTest {
     @Test
     void testInstanceAndMessage() {
-        InvalidRoleException exception = new InvalidRoleException();
+        InvalidReasonException exception = new InvalidReasonException();
         assertInstanceOf(RuntimeException.class, exception);
-        assertEquals("Invalid role", exception.getMessage());
+        assertEquals("Invalid reason, it should have at least 3 characters", exception.getMessage());
     }
 }

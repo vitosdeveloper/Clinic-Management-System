@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
-public class InvalidRoleExceptionTest {
+public class InvalidStatusExceptionTest {
     @Test
     void testInstanceAndMessage() {
-        InvalidRoleException exception = new InvalidRoleException();
+        InvalidStatusException exception = new InvalidStatusException();
         assertInstanceOf(RuntimeException.class, exception);
-        assertEquals("Invalid role", exception.getMessage());
+        assertEquals("Invalid Status", exception.getMessage());
     }
 }

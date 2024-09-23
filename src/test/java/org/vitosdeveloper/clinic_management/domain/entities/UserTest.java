@@ -63,17 +63,17 @@ public class UserTest {
         InvalidPasswordException exceptionOne = assertThrows(InvalidPasswordException.class, () -> {
             new User(expectedId, expectedEmail, "", expectedRole);
         });
-        assertEquals("Invalid password", exceptionOne.getMessage());
+        assertEquals("Invalid password. Should have at least 6 characters.", exceptionOne.getMessage());
 
         InvalidPasswordException exceptionTwo = assertThrows(InvalidPasswordException.class, () -> {
             new User(expectedId, expectedEmail, "12345", expectedRole);
         });
-        assertEquals("Invalid password", exceptionTwo.getMessage());
+        assertEquals("Invalid password. Should have at least 6 characters.", exceptionTwo.getMessage());
 
         InvalidPasswordException exceptionThree = assertThrows(InvalidPasswordException.class, () -> {
             new User(expectedId, expectedEmail, null, expectedRole);
         });
-        assertEquals("Invalid password", exceptionThree.getMessage());
+        assertEquals("Invalid password. Should have at least 6 characters.", exceptionThree.getMessage());
     }
 
     @Test

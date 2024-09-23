@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 public class InvalidIdExceptionTest {
     @Test
-    void testInvalidIdException() {
+    void testInstanceAndMessage() {
         InvalidIdException exception = new InvalidIdException();
         assertInstanceOf(RuntimeException.class, exception);
         assertEquals("Invalid id", exception.getMessage());

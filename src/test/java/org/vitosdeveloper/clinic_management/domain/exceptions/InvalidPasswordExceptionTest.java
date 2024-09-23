@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 public class InvalidPasswordExceptionTest {
     @Test
-    void testInvalidPasswordException() {
+    void testInstanceAndMessage() {
         InvalidPasswordException exception = new InvalidPasswordException();
         assertInstanceOf(RuntimeException.class, exception);
-        assertEquals("Invalid password", exception.getMessage());
+        assertEquals("Invalid password. Should have at least 6 characters.", exception.getMessage());
     }
 }

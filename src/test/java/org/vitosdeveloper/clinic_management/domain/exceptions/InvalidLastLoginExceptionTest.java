@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 public class InvalidLastLoginExceptionTest {
     @Test
-    void testInvalidLastLoginException() {
+    void testInstanceAndMessage() {
         InvalidLastLoginException exception = new InvalidLastLoginException();
         assertInstanceOf(RuntimeException.class, exception);
         assertEquals("Invalid lastLogin", exception.getMessage());

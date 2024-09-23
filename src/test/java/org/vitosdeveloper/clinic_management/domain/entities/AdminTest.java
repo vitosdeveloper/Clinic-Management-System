@@ -36,9 +36,8 @@ public class AdminTest {
 
     @Test
     void testAdminValidations(){
-        InvalidLastLoginException exceptionOne = assertThrows(InvalidLastLoginException.class, () -> {
-            new Admin(expectedId, expectedEmail, expectedPassword, null);
-        });
+        InvalidLastLoginException exceptionOne = assertThrows(InvalidLastLoginException.class, () ->
+                new Admin(expectedId, expectedEmail, expectedPassword, null));
         assertEquals("Invalid lastLogin" ,exceptionOne.getMessage());
     }
 }
