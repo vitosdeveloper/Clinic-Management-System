@@ -1,21 +1,25 @@
 package org.vitosdeveloper.clinic_management.domain.entities;
 
+import org.springframework.util.StringUtils;
 import org.vitosdeveloper.clinic_management.domain.enums.Role;
+import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidAppointmentException;
+import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidCrmException;
+import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidSpecialistyException;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class Doctor extends User {
     private final String crm;
     private final List<Speciality> specialities;
-    private final List<Appointment> appoitments;
+    private final List<Appointment> appointments;
 
     public Doctor(Long id, String email, String password, String crm,
                   List<Speciality> specialities, List<Appointment> appoitments) {
         super(id, email, password, Role.DOCTOR);
         this.crm = crm;
         this.specialities = specialities;
-        this.appoitments = appoitments;
+        this.appointments = appoitments;
+        validateDoctorFields();
     }
 
     public String getCrm() {
@@ -27,6 +31,16 @@ public class Doctor extends User {
     }
 
     public List<Appointment> getAppoitments() {
-        return appoitments;
+        return appointments;
+    }
+
+    private void validateDoctorFields() {
+        if (crm == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(crm))) throw new InvalidCrmException();
+        specialities.forEach(speciality -> {
+            if (!Speciality.class.isInstance(speciality)) throw new InvalidSpecialistyException();
+        });
+        appointments.forEach(apopintment -> {
+            if (!Appointment.class.isInstance(apopintment)) throw new InvalidAppointmentException();
+        });
     }
 }
