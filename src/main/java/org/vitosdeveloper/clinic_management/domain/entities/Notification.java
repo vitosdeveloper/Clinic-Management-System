@@ -11,7 +11,7 @@ public class Notification {
     private final String message;
     private final LocalDateTime sentAt;
 
-    public Notification(String message, Long id, User recipient, LocalDateTime sentAt) {
+    public Notification(Long id, User recipient, String message, LocalDateTime sentAt) {
         this.message = message;
         this.id = id;
         this.recipient = recipient;
