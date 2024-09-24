@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.vitosdeveloper.clinic_management.domain.enums.Role;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidAppointmentException;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidCrmException;
-import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidSpecialistyException;
+import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidSpecialistException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -42,7 +42,7 @@ public class DoctorTest {
         });
         assertEquals("Invalid Crm", exceptionOne.getMessage());
 
-        InvalidSpecialistyException exceptionTwo = assertThrows(InvalidSpecialistyException.class, () -> {
+        InvalidSpecialistException exceptionTwo = assertThrows(InvalidSpecialistException.class, () -> {
             new Doctor(expectedId, expectedEmail, expectedPassword, expectedCrm, null, expectedAppointments);
         });
         assertEquals("Invalid Speciality", exceptionTwo.getMessage());

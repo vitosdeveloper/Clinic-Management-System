@@ -4,7 +4,7 @@ import org.springframework.util.StringUtils;
 import org.vitosdeveloper.clinic_management.domain.enums.Role;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidAppointmentException;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidCrmException;
-import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidSpecialistyException;
+import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidSpecialistException;
 
 import java.util.List;
 
@@ -36,10 +36,10 @@ public class Doctor extends User {
 
     private void validateDoctorFields() {
         if (crm == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(crm))) throw new InvalidCrmException();
-        if (specialities == null) throw new InvalidSpecialistyException();
+        if (specialities == null) throw new InvalidSpecialistException();
         if (appointments == null) throw new InvalidAppointmentException();
         specialities.forEach(speciality -> {
-            if (!Speciality.class.isInstance(speciality)) throw new InvalidSpecialistyException();
+            if (!Speciality.class.isInstance(speciality)) throw new InvalidSpecialistException();
         });
         appointments.forEach(apopintment -> {
             if (!Appointment.class.isInstance(apopintment)) throw new InvalidAppointmentException();
