@@ -36,6 +36,8 @@ public class Doctor extends User {
 
     private void validateDoctorFields() {
         if (crm == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(crm))) throw new InvalidCrmException();
+        if (specialities == null) throw new InvalidSpecialistyException();
+        if (appointments == null) throw new InvalidAppointmentException();
         specialities.forEach(speciality -> {
             if (!Speciality.class.isInstance(speciality)) throw new InvalidSpecialistyException();
         });
