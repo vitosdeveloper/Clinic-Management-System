@@ -1,9 +1,8 @@
 package org.vitosdeveloper.clinic_management.domain.entities;
 
-import org.springframework.util.StringUtils;
 import org.vitosdeveloper.clinic_management.domain.enums.Role;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidBirthDateException;
-import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidCpfException;
+import org.vitosdeveloper.clinic_management.domain.utils.Validate;
 
 import java.time.LocalDate;
 
@@ -27,7 +26,7 @@ public class Patient extends User {
     }
 
     private void validateFields() {
-        if (cpf == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(cpf))) throw new InvalidCpfException();
+        Validate.cpfWithRegex(cpf);
         if (!LocalDate.class.isInstance(birthDate)) throw new InvalidBirthDateException();
     }
 }

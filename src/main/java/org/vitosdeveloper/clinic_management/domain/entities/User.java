@@ -2,13 +2,12 @@ package org.vitosdeveloper.clinic_management.domain.entities;
 
 import org.springframework.util.StringUtils;
 import org.vitosdeveloper.clinic_management.domain.enums.Role;
-import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidEmailException;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidIdException;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidPasswordException;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidRoleException;
+import org.vitosdeveloper.clinic_management.domain.utils.Validate;
 
 import java.time.LocalDateTime;
-import java.util.regex.Pattern;
 
 public class User {
     private final Long id;
@@ -16,7 +15,6 @@ public class User {
     private final String password;
     private final LocalDateTime createdAt;
     private final Role role;
-    private static final String EMAIL_PATTERN = "^[\\w-.]+@[\\w-]+\\.[a-zA-Z]{2,4}$";
 
     public User(Long id, String email, String password, Role role) {
         this.id = id;
@@ -49,9 +47,7 @@ public class User {
 
     private void validateFields() {
         if (this.id == null || id <= 0L) throw new InvalidIdException();
-        if (this.email == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(this.email)) ||
-                !Pattern.matches(EMAIL_PATTERN, email))
-            throw new InvalidEmailException();
+        Validate.emailWithRegex(email);
         if (this.password == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(this.password))
                 || this.password.length() < 6)
             throw new InvalidPasswordException();

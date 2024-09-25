@@ -35,8 +35,16 @@ public class PatientTest {
                 new Patient(expectedId, expectedEmail, expectedPassword, null, expectedBirthDate));
         assertEquals("Invalid Cpf", exceptionOne.getMessage());
 
-        InvalidBirthDateException exceptiontwo = assertThrows(InvalidBirthDateException.class, () ->
+        InvalidCpfException exceptionTwo = assertThrows(InvalidCpfException.class, () ->
+                new Patient(expectedId, expectedEmail, expectedPassword, "", expectedBirthDate));
+        assertEquals("Invalid Cpf", exceptionTwo.getMessage());
+
+        InvalidCpfException exceptionThree = assertThrows(InvalidCpfException.class, () ->
+                new Patient(expectedId, expectedEmail, expectedPassword, "000.000.000-0", expectedBirthDate));
+        assertEquals("Invalid Cpf", exceptionThree.getMessage());
+
+        InvalidBirthDateException exceptionFour = assertThrows(InvalidBirthDateException.class, () ->
                 new Patient(expectedId, expectedEmail, expectedPassword, expectedCpf, null));
-        assertEquals("Invalid BirthDate", exceptiontwo.getMessage());
+        assertEquals("Invalid BirthDate", exceptionFour.getMessage());
     }
 }
