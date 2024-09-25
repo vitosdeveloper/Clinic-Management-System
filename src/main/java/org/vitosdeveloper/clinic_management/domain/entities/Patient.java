@@ -1,9 +1,12 @@
 package org.vitosdeveloper.clinic_management.domain.entities;
 
+import org.springframework.util.StringUtils;
 import org.vitosdeveloper.clinic_management.domain.enums.Role;
+import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidBirthDateException;
+import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidCpfException;
+import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidCrmException;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Patient extends User {
     private final String cpf;
@@ -13,6 +16,7 @@ public class Patient extends User {
         super(id, email, password, Role.PATIENT);
         this.cpf = cpf;
         this.birthDate = birthDate;
+        validateFields();
     }
 
     public String getCpf() {
@@ -21,5 +25,10 @@ public class Patient extends User {
 
     public LocalDate getBirthDate() {
         return birthDate;
+    }
+
+    private void validateFields() {
+        if (cpf == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(cpf))) throw new InvalidCpfException();
+        if (!LocalDate.class.isInstance(birthDate)) throw new InvalidBirthDateException();
     }
 }
