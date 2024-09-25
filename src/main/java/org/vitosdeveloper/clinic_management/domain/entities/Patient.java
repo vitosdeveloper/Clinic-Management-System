@@ -4,7 +4,6 @@ import org.springframework.util.StringUtils;
 import org.vitosdeveloper.clinic_management.domain.enums.Role;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidBirthDateException;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidCpfException;
-import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidCrmException;
 
 import java.time.LocalDate;
 
