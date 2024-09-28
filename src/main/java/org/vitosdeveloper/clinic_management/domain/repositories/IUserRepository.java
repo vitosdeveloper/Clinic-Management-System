@@ -4,6 +4,6 @@ import org.vitosdeveloper.clinic_management.domain.entities.User;
 
 import java.util.Optional;
 
-public interface UserRepository extends GenericRepository<User> {
+public interface IUserRepository extends IGenericRepository<User> {
     Optional<User> findByEmail(String email);
 }

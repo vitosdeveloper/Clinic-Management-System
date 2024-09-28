@@ -29,11 +29,6 @@ public class UserTest {
 
     @Test
     void testIdValidation() {
-        InvalidIdException exceptionOne = assertThrows(InvalidIdException.class, () -> {
-            new User(null, expectedEmail, expectedPassword, expectedRole);
-        });
-        assertEquals("Invalid id", exceptionOne.getMessage());
-
         InvalidIdException exceptionTwo = assertThrows(InvalidIdException.class, () -> {
             new User(-1L, "badEmailFormat", expectedPassword, expectedRole);
         });

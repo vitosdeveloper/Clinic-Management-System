@@ -46,7 +46,7 @@ public class User {
     }
 
     private void validateFields() {
-        if (this.id == null || id <= 0L) throw new InvalidIdException();
+        if (id != null && id <= 0L) throw new InvalidIdException();
         Validate.emailWithRegex(email);
         if (this.password == null || !StringUtils.hasLength(StringUtils.trimAllWhitespace(this.password))
                 || this.password.length() < 6)
