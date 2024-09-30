@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class RegisterUserTest {
-
     private IUserRepository userRepository;
     private IPasswordHasher passwordHasher;
     private RegisterUser registerUser;

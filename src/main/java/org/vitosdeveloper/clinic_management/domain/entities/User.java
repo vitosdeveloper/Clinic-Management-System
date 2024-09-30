@@ -3,6 +3,7 @@ package org.vitosdeveloper.clinic_management.domain.entities;
 import org.springframework.util.StringUtils;
 import org.vitosdeveloper.clinic_management.domain.enums.Role;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidIdException;
+import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidNameException;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidPasswordException;
 import org.vitosdeveloper.clinic_management.domain.exceptions.InvalidRoleException;
 import org.vitosdeveloper.clinic_management.domain.utils.Validate;
