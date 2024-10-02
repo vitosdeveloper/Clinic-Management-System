@@ -1,5 +1,8 @@
 package org.vitosdeveloper.clinic_management.application.usecases.user.implementations;
 
+import org.vitosdeveloper.clinic_management.application.exceptions.AppointmentSlotTakenException;
+import org.vitosdeveloper.clinic_management.application.exceptions.DoctorNotFoundException;
+import org.vitosdeveloper.clinic_management.application.exceptions.PatientNotFoundException;
 import org.vitosdeveloper.clinic_management.application.usecases.user.contracts.IScheduleAppointment;
 import org.vitosdeveloper.clinic_management.domain.entities.Appointment;
 import org.vitosdeveloper.clinic_management.domain.entities.Doctor;
@@ -25,11 +28,11 @@ public class ScheduleAppointment implements IScheduleAppointment {
     @Override
     public Appointment execute(Long doctorId, Long patientId, LocalDateTime appointmentTime) {
         Doctor doctor = this.doctorRepository.findById(doctorId)
-                .orElseThrow(() -> new RuntimeException(""));
+                .orElseThrow(() -> new DoctorNotFoundException(doctorId));
         boolean isSlotTaken = this.appointmentRepository.isAppointmentSlotTaken(doctorId, appointmentTime);
-        if (isSlotTaken) throw new RuntimeException("");
+        if (isSlotTaken) throw new AppointmentSlotTakenException(appointmentTime);
         Patient patient = this.patientRepository.findById(patientId)
-                .orElseThrow(() -> new RuntimeException(""));
+                .orElseThrow(() -> new PatientNotFoundException(patientId));
         Appointment appointment = new Appointment(null, patient, doctor, appointmentTime, Status.PENDING, "");
         return this.appointmentRepository.save(appointment);
     }
