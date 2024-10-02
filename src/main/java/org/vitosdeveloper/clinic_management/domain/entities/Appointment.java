@@ -48,8 +48,8 @@ public class Appointment {
         return reason;
     }
 
-    private void validateFields(){
-        if (id == null || id <= 0L) throw new InvalidIdException();
+    private void validateFields() {
+        if (id != null && id <= 0L) throw new InvalidIdException();
         if (patient == null) throw new InvalidPatientException();
         if (doctor == null) throw new InvalidDoctorException();
         if (appointmentDate == null) throw new InvalidAppointmentDateException();

@@ -26,14 +26,14 @@ public class ScheduleAppointment implements IScheduleAppointment {
     }
 
     @Override
-    public Appointment execute(Long doctorId, Long patientId, LocalDateTime appointmentTime) {
+    public Appointment execute(Long doctorId, Long patientId, LocalDateTime appointmentTime, String reason) {
         Doctor doctor = this.doctorRepository.findById(doctorId)
                 .orElseThrow(() -> new DoctorNotFoundException(doctorId));
         boolean isSlotTaken = this.appointmentRepository.isAppointmentSlotTaken(doctorId, appointmentTime);
         if (isSlotTaken) throw new AppointmentSlotTakenException(appointmentTime);
         Patient patient = this.patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException(patientId));
-        Appointment appointment = new Appointment(null, patient, doctor, appointmentTime, Status.PENDING, "");
+        Appointment appointment = new Appointment(null, patient, doctor, appointmentTime, Status.PENDING, reason);
         return this.appointmentRepository.save(appointment);
     }
 }
