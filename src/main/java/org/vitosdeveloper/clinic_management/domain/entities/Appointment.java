@@ -11,7 +11,7 @@ public class Appointment {
     private final Patient patient;
     private final Doctor doctor;
     private final LocalDateTime appointmentDate;
-    private final Status status;
+    private Status status;
     private final String reason;
 
     public Appointment(Long id, Patient patient, Doctor doctor, LocalDateTime appointmentDate, Status status, String reason) {
@@ -46,6 +46,10 @@ public class Appointment {
 
     public String getReason() {
         return reason;
+    }
+
+    public void setStatus(Status newStatus) {
+        this.status = newStatus;
     }
 
     private void validateFields() {

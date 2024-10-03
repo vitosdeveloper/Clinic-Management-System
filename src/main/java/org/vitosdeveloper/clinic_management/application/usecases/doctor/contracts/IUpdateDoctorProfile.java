@@ -1,4 +1,4 @@
-package org.vitosdeveloper.clinic_management.application.usecases.user.contracts;
+package org.vitosdeveloper.clinic_management.application.usecases.doctor.contracts;
 
 import org.vitosdeveloper.clinic_management.domain.entities.Speciality;
 

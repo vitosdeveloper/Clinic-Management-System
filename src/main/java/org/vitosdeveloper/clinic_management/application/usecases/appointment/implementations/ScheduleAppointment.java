@@ -1,9 +1,9 @@
-package org.vitosdeveloper.clinic_management.application.usecases.user.implementations;
+package org.vitosdeveloper.clinic_management.application.usecases.appointment.implementations;
 
 import org.vitosdeveloper.clinic_management.application.exceptions.AppointmentSlotTakenException;
 import org.vitosdeveloper.clinic_management.application.exceptions.DoctorNotFoundException;
 import org.vitosdeveloper.clinic_management.application.exceptions.PatientNotFoundException;
-import org.vitosdeveloper.clinic_management.application.usecases.user.contracts.IScheduleAppointment;
+import org.vitosdeveloper.clinic_management.application.usecases.appointment.contracts.IScheduleAppointment;
 import org.vitosdeveloper.clinic_management.domain.entities.Appointment;
 import org.vitosdeveloper.clinic_management.domain.entities.Doctor;
 import org.vitosdeveloper.clinic_management.domain.entities.Patient;

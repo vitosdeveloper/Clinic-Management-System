@@ -1,4 +1,4 @@
-package org.vitosdeveloper.clinic_management.application.usecases.user.implementations;
+package org.vitosdeveloper.clinic_management.application.usecases.scheduleAppointment.implementations;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 import org.vitosdeveloper.clinic_management.application.exceptions.AppointmentSlotTakenException;
 import org.vitosdeveloper.clinic_management.application.exceptions.DoctorNotFoundException;
 import org.vitosdeveloper.clinic_management.application.exceptions.PatientNotFoundException;
+import org.vitosdeveloper.clinic_management.application.usecases.appointment.implementations.ScheduleAppointment;
 import org.vitosdeveloper.clinic_management.domain.entities.Appointment;
 import org.vitosdeveloper.clinic_management.domain.entities.Doctor;
 import org.vitosdeveloper.clinic_management.domain.entities.Patient;

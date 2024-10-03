@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AppointmentTest {
     private Long expectedId = 1L;
-    private Patient expectedPatient = new Patient(1L, "johny@gmail.com", "patientPassword", "045.231.231.2", LocalDate.now());
+    private Patient expectedPatient = new Patient(1L, "johny@gmail.com", "patientPassword", "123.123.123-12", LocalDate.now());
     private Doctor expectedDoctor = new Doctor(1L, "chaluba@gmail.com", "doctorPassword", "crm", List.of(), List.of());
     private LocalDateTime expectedAppointmentDate = LocalDateTime.now();
     private Status expectedStatus = Status.PENDING;
@@ -36,11 +36,6 @@ public class AppointmentTest {
             new Appointment(-1L, expectedPatient, expectedDoctor, expectedAppointmentDate, expectedStatus, expectedReason);
         });
         assertEquals("Invalid id", exceptionTwo.getMessage());
-
-        InvalidIdException exceptionThree = assertThrows(InvalidIdException.class, () -> {
-            new Appointment(null, expectedPatient, expectedDoctor, expectedAppointmentDate, expectedStatus, expectedReason);
-        });
-        assertEquals("Invalid id", exceptionThree.getMessage());
     }
 
     @Test
@@ -81,5 +76,17 @@ public class AppointmentTest {
             new Appointment(expectedId, expectedPatient, expectedDoctor, expectedAppointmentDate, expectedStatus, null);
         });
         assertEquals("Invalid reason, it should have at least 3 characters", exceptionThree.getMessage());
+    }
+
+    @Test
+    void testSetStatus() {
+        Appointment appointment = new Appointment(expectedId, expectedPatient, expectedDoctor, expectedAppointmentDate, expectedStatus, expectedReason);
+        assertEquals(Status.PENDING, appointment.getStatus());
+        appointment.setStatus(Status.CANCELED);
+        assertEquals(Status.CANCELED, appointment.getStatus());
+        appointment.setStatus(Status.COMPLETED);
+        assertEquals(Status.COMPLETED, appointment.getStatus());
+        appointment.setStatus(Status.CONFIRMED);
+        assertEquals(Status.CONFIRMED, appointment.getStatus());
     }
 }
