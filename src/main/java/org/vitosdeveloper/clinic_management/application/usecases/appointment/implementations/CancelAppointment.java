@@ -1,5 +1,6 @@
 package org.vitosdeveloper.clinic_management.application.usecases.appointment.implementations;
 
+import org.vitosdeveloper.clinic_management.application.exceptions.AppointmentNotFoundException;
 import org.vitosdeveloper.clinic_management.application.usecases.appointment.contracts.ICancelAppointment;
 import org.vitosdeveloper.clinic_management.domain.entities.Appointment;
 import org.vitosdeveloper.clinic_management.domain.enums.Status;
@@ -15,7 +16,7 @@ public class CancelAppointment implements ICancelAppointment {
     @Override
     public void execute(Long appointmentId) {
         Appointment appointment = this.appointmentRepository
-                .findById(appointmentId).orElseThrow(() -> new RuntimeException(""));
+                .findById(appointmentId).orElseThrow(AppointmentNotFoundException::new);
         appointment.setStatus(Status.CANCELED);
         this.appointmentRepository.save(appointment);
     }
