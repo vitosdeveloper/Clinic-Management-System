@@ -1,4 +1,4 @@
-package org.vitosdeveloper.clinic_management.application.usecases.scheduleAppointment.implementations;
+package org.vitosdeveloper.clinic_management.application.usecases.appointment.implementations;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,8 +45,8 @@ public class ScheduleAppointmentTest {
         Long doctorId = 1L;
         Long patientId = 2L;
         LocalDateTime appointmentDate = LocalDateTime.now().plusDays(1);
-        Doctor doctor = new Doctor(doctorId, "DrSmith@gmail.com", "DoctorPassword", "crm", List.of(), List.of());
-        Patient patient = new Patient(patientId, "JohnDoe@gmail.com", "userPassword", "000.000.000-00", LocalDate.now());
+        Doctor doctor = mock(Doctor.class);
+        Patient patient = mock(Patient.class);
 
         when(this.doctorRepository.findById(doctorId)).thenReturn(Optional.of(doctor));
         when(this.appointmentRepository.isAppointmentSlotTaken(doctorId, appointmentDate)).thenReturn(false);
@@ -84,7 +84,7 @@ public class ScheduleAppointmentTest {
         Long doctorId = 1L;
         Long patientId = 2L;
         LocalDateTime appointmentDate = LocalDateTime.now().plusDays(1);
-        Doctor doctor = new Doctor(doctorId, "DrSmith@gmail.com", "DoctorPassword", "crm", List.of(), List.of());
+        Doctor doctor = mock(Doctor.class);
 
         when(doctorRepository.findById(doctorId)).thenReturn(Optional.of(doctor));
         when(patientRepository.findById(patientId)).thenReturn(Optional.empty());
@@ -101,9 +101,9 @@ public class ScheduleAppointmentTest {
         Long doctorId = 1L;
         Long patientId = 2L;
         LocalDateTime appointmentDate = LocalDateTime.now().plusDays(1);
-        Doctor doctor = new Doctor(doctorId, "DrSmith@gmail.com", "DoctorPassword", "crm", List.of(), List.of());
-        Patient patient = new Patient(patientId, "JohnDoe@gmail.com", "userPassword", "000.000.000-00", LocalDate.now());
-
+        Doctor doctor = mock(Doctor.class);
+        Patient patient = mock(Patient.class);
+        
         when(doctorRepository.findById(doctorId)).thenReturn(Optional.of(doctor));
         when(patientRepository.findById(patientId)).thenReturn(Optional.of(patient));
         when(appointmentRepository.isAppointmentSlotTaken(doctorId, appointmentDate)).thenReturn(true);
