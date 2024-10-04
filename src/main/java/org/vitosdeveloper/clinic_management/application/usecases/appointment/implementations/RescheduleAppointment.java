@@ -1,6 +1,7 @@
 package org.vitosdeveloper.clinic_management.application.usecases.appointment.implementations;
 
 import org.vitosdeveloper.clinic_management.application.exceptions.AppointmentNotFoundException;
+import org.vitosdeveloper.clinic_management.application.exceptions.InvalidAppointmentDateException;
 import org.vitosdeveloper.clinic_management.application.usecases.appointment.contracts.IRescheduleAppointment;
 import org.vitosdeveloper.clinic_management.domain.entities.Appointment;
 import org.vitosdeveloper.clinic_management.domain.repositories.IAppointmentRepository;
@@ -19,7 +20,7 @@ public class RescheduleAppointment implements IRescheduleAppointment {
     public void execute(Long appointmentId, LocalDateTime newTime) {
         Appointment appointment = appointmentRepository.findById(appointmentId)
                 .orElseThrow(AppointmentNotFoundException::new);
-        if (newTime.isBefore(LocalDateTime.now())) throw new RuntimeException();
+        if (newTime.isBefore(LocalDateTime.now())) throw new InvalidAppointmentDateException();
         appointment.setAppointmentDate(newTime);
         appointmentRepository.save(appointment);
     }
