@@ -10,7 +10,7 @@ public class Appointment {
     private final Long id;
     private final Patient patient;
     private final Doctor doctor;
-    private final LocalDateTime appointmentDate;
+    private LocalDateTime appointmentDate;
     private Status status;
     private final String reason;
 
@@ -50,6 +50,10 @@ public class Appointment {
 
     public void setStatus(Status newStatus) {
         this.status = newStatus;
+    }
+
+    public void setAppointmentDate(LocalDateTime newDate) {
+        this.appointmentDate = newDate;
     }
 
     private void validateFields() {

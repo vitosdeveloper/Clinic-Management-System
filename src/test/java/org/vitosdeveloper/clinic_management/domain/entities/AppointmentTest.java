@@ -89,4 +89,12 @@ public class AppointmentTest {
         appointment.setStatus(Status.CONFIRMED);
         assertEquals(Status.CONFIRMED, appointment.getStatus());
     }
+
+    @Test
+    void testSetAppointmentDate() {
+        Appointment appointment = new Appointment(expectedId, expectedPatient, expectedDoctor, expectedAppointmentDate, expectedStatus, expectedReason);
+        LocalDateTime now = LocalDateTime.now();
+        appointment.setAppointmentDate(now);
+        assertEquals(now, appointment.getAppointmentDate());
+    }
 }
